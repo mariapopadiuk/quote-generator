@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
@@ -13,10 +13,20 @@ function getQuote() {
   })
 }
 
+useEffect(() => {
+  getQuote()
+}, []);
+
   return (
     <div className="App">
-      {quote.text}
-      <button onClick={getQuote}>Quote</button>
+      <div className='quote'>
+        <p>{quote.text}</p>
+        <p>{quote.author}</p>
+        <div className='btnContainer'>
+          <button className='btn'>Get quote</button>
+          <a href="" className='btn'>Tweet</a>
+        </div>
+      </div>
     </div>
   );
 }
